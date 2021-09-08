@@ -6,7 +6,13 @@ namespace EfDbFirst
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            do
+            {
+
+                Console.WriteLine("________________________________________________________");
+                Console.WriteLine("Press 'E' to exit or any key to repeat");
+                if (Console.ReadKey().Key == ConsoleKey.E) break;
+            } while (true);
         }
     }
 }
