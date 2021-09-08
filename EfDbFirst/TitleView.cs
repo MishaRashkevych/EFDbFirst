@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace EfDbFirst
 {
     public class TitleView
     {
+        Models.pubsContext context;
+
         public string GetTitleId(IEnumerable<string> titleIds)
         {
             string id = string.Empty;
@@ -22,6 +25,18 @@ namespace EfDbFirst
                 else Console.WriteLine("Id is not present in list. Try againe");
             } while (true);
             return id;
+        }
+        public void GetSalesByTitleId(string titleId)
+        {
+            var sales = context.Titles.Where(id => id.TitleId == titleId).FirstOrDefault();
+            if(sales == null)
+            {
+                Console.WriteLine("There is no sales by this id");
+            }
+            else
+            {
+                Console.WriteLine("ID: " + sales.TitleId + "Price: " + sales.Price + "Sales: " + sales.Sales);
+            }
         }
     }
 }
